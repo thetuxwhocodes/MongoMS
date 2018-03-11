@@ -29,12 +29,17 @@ public class MongoPersistenceController {
 		return repository.findAll();
 	}
 	
-	@GetMapping("/customerByName")
-	public List<Customer> getCustomerByName(@RequestParam String firstName) {
+	@GetMapping("/customerByFirstName")
+	public List<Customer> getCustomerByFirstName(@RequestParam String firstName) {
 		return repository.findByFirstName(firstName);
 	}
 	
-	@PostMapping("customer")
+	@GetMapping("/customerByLastName")
+	public List<Customer> getCustomerByLastName(@RequestParam String lastName) {
+		return repository.findByLastName(lastName);
+	}
+	
+	@PostMapping("/customer")
 	public void saveCustomer(@RequestBody Customer customer)
 	{
 		repository.save(customer);

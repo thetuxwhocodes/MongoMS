@@ -35,18 +35,5 @@ public class MongomsApplication implements CommandLineRunner{
 		}
 		System.out.println();
 
-		// fetch an individual customer
-		System.out.println("Customer found with findByFirstName('Alice'):");
-		System.out.println("--------------------------------");
-		for (Customer customer : repository.findByFirstName("Alice")) {
-			System.out.println(customer);
-		}
-
-		System.out.println("Customers found with findByLastName('Smith'):");
-		System.out.println("--------------------------------");
-		for (Customer customer : repository.findByLastName("Smith")) {
-			System.out.println(customer);
-		}
-
 	}
 }
