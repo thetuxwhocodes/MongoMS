@@ -19,7 +19,7 @@ public class MongoPersistenceController {
 	
 	@GetMapping("/hello")
 	public String sayHello() {
-		return "Let's do some Mongo Persistence!!";
+		return "Let's do some Mongo Persistence!!!";
 	}
 	
 	@GetMapping("/customers")
