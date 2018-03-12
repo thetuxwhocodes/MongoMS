@@ -29,11 +29,6 @@ public class MongomsApplication implements CommandLineRunner{
 
 		// fetch all customers
 		System.out.println("Customers found with findAll():");
-		System.out.println("-------------------------------");
-		for (Customer customer : repository.findAll()) {
-			System.out.println(customer);
-		}
-		System.out.println();
-
+		repository.findAll().stream().forEach(System.out::println);
 	}
 }
