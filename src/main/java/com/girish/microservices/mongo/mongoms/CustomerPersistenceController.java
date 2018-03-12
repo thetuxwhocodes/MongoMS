@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,45 +19,41 @@ import com.girish.microservices.mongo.mongoms.repository.CustomerRepository;
 
 
 @RestController
+@RequestMapping("/customer")
 public class CustomerPersistenceController {
 
 	@Autowired
 	private CustomerRepository repository;
 	
-	@GetMapping("/hello")
-	public String sayHello() {
-		return "Let's do some Mongo Persistence!!!";
-	}
-	
-	@GetMapping("/customers")
+	@GetMapping("/all")
 	public List<Customer> getAllCustomers() {
 		return repository.findAll();
 	}
 	
-	@GetMapping("/customerByFirstName")
+	@GetMapping("/firstName")
 	public List<Customer> getCustomerByFirstName(@RequestParam String firstName) {
 		return repository.findByFirstName(firstName);
 	}
 	
-	@GetMapping("/customerByLastName")
+	@GetMapping("/lastName")
 	public List<Customer> getCustomerByLastName(@RequestParam String lastName) {
 		return repository.findByLastName(lastName);
 	}
 	
-	@PostMapping("/customer")
+	@PostMapping("/")
 	public void createCustomer(@RequestBody Customer customer)
 	{
 		repository.save(customer);
 	}
 
-	@PutMapping("/customer")
+	@PutMapping("/")
 	public void updateCustomer(@RequestBody Customer customer)
 	{
 		Objects.requireNonNull(customer.getId(), "Customer Id must be set for an Update operation.");
 		repository.save(customer);
 	}
 
-	@DeleteMapping("/customer/{customerId}")
+	@DeleteMapping("/{customerId}")
 	public void deleteCustomer(@PathVariable String customerId)
 	{
 		Customer customer = repository.findById(customerId).get();
