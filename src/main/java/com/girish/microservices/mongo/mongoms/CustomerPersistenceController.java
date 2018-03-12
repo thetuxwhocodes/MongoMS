@@ -18,7 +18,7 @@ import com.girish.microservices.mongo.mongoms.repository.CustomerRepository;
 
 
 @RestController
-public class MongoPersistenceController {
+public class CustomerPersistenceController {
 
 	@Autowired
 	private CustomerRepository repository;
